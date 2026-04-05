@@ -63,9 +63,7 @@ categories: ["category1"]
 
 ### 3.2 图片
 
-![这是一个图片](https://disk.0voice.com/u/En)
-
-![带标题的图片](https://disk.0voice.com/u/EQ?text=Image+with+Title "图片标题")
+![这是一个图片](./screenshots/dark-preview.png)
 
 ---
 

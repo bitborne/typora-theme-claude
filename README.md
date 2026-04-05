@@ -2,7 +2,7 @@
 
 > A Typora theme inspired by [claude.ai](https://claude.ai) — clean, warm, and remarkably complete.
 
-[中文文档](./README_CN.md)
+[中文文档](./README.zh-CN.md)
 
 ![License](https://img.shields.io/badge/license-MIT-orange)
 ![Typora](https://img.shields.io/badge/Typora-1.0%2B-brightgreen)
@@ -13,13 +13,9 @@
 ## Preview
 
 ### Light
-
-<!-- Replace with your screenshot -->
 ![Light Theme Preview](./screenshots/light-preview.png)
 
 ### Dark
-
-<!-- Replace with your screenshot -->
 ![Dark Theme Preview](./screenshots/dark-preview.png)
 
 ---

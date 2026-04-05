@@ -13,13 +13,9 @@
 ## 预览
 
 ### 亮色
-
-<!-- 替换为你的截图 -->
 ![亮色主题预览](./screenshots/light-preview.png)
 
 ### 暗色
-
-<!-- 替换为你的截图 -->
 ![暗色主题预览](./screenshots/dark-preview.png)
 
 ---

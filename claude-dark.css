@@ -1,0 +1,1431 @@
+:root {
+    --side-bar-bg-color: #242423;
+    --control-text-color: #9a9896;
+    --text-color: #e0dedb;
+    --bg-color: #262624;
+    --window-bg-color: #242423;
+    --select-text-bg-color: #4a4845;
+    --item-hover-bg-color: rgba(255, 255, 255, 0.06);
+    --active-file-bg-color: rgba(255, 255, 255, 0.1);
+    --active-file-border-color: #d4a574;
+    --code-bg-color: #1f1f1e;
+    --code-text-color: #f0eeeb;
+    --code-border-color: #363533;
+    --border-color: #3a3936;
+    --accent-color: #d4a574;
+    --heading-color: #f5f4f2;
+    --quote-bg-color: #2a2a28;
+    --quote-border-color: #4a4946;
+    --quote-text-color: #c8c6c3;
+    --table-alt-color: #2a2a28;
+    --font-body: "Songti SC", "Noto Serif CJK SC", "Source Han Serif SC", "PingFang SC", "Hiragino Sans GB", serif;
+    --font-ui: "PingFang SC", "Hiragino Sans GB", "Noto Sans CJK SC", "Source Han Sans SC", "Microsoft YaHei", "Segoe UI", sans-serif;
+    --font-mono: Menlo, Monaco, "SF Mono", Consolas, "Sarasa Mono SC", "Cascadia Code", monospace;
+    --table-border-strong-color: #4a4946;
+    --table-row-border-color: rgba(255, 255, 255, 0.1);
+    --table-hover-color: rgba(255, 255, 255, 0.04);
+    --code-muted-color: #b5a99d;
+    --code-keyword-color: #cba3f5;
+    --code-string-color: #9cdcaa;
+    --code-number-color: #d8bb8c;
+    --code-symbol-color: #9dcaf8;
+    --inline-code-color: #e8a595;
+    --inline-code-bg-color: #2d2d2b;
+    --inline-code-border-color: #454442;
+}
+
+@include-when-export url(https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=Source+Serif+4:wght@400;600;700&display=swap);
+
+html {
+    font-size: 16px;
+    -webkit-font-smoothing: antialiased;
+    background-color: var(--bg-color);
+}
+
+body {
+    font-family: var(--font-body);
+    color: var(--text-color);
+    background-color: var(--bg-color);
+    line-height: 1.62;
+    letter-spacing: 0;
+    font-weight: 400;
+}
+
+#write {
+    max-width: 780px;
+    margin: 0 auto;
+    padding: 32px 32px 104px;
+}
+
+@media only screen and (min-width: 1400px) {
+    #write {
+        max-width: 820px;
+    }
+}
+
+@media only screen and (min-width: 1800px) {
+    #write {
+        max-width: 880px;
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    #write {
+        padding: 24px 20px 84px;
+    }
+}
+
+#write > ul:first-child,
+#write > ol:first-child {
+    margin-top: 30px;
+}
+
+a {
+    color: var(--accent-color);
+    text-decoration: none;
+}
+
+a:hover {
+    color: #e6c495;
+    text-decoration: underline;
+}
+
+a:visited {
+    color: #c4b5fd;
+}
+
+mark {
+    background-color: #5a4a2a;
+    color: #f5e6c8;
+    padding: 0.1em 0.3em;
+    border-radius: 4px;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    position: relative;
+    margin-top: 1.45rem;
+    margin-bottom: 0.7rem;
+    font-family: var(--font-body);
+    font-weight: 600;
+    line-height: 1.3;
+    color: var(--heading-color);
+    letter-spacing: 0;
+    cursor: text;
+}
+
+h1:hover a.anchor,
+h2:hover a.anchor,
+h3:hover a.anchor,
+h4:hover a.anchor,
+h5:hover a.anchor,
+h6:hover a.anchor {
+    text-decoration: none;
+}
+
+h1 tt,
+h1 code {
+    font-size: inherit;
+}
+
+h2 tt,
+h2 code {
+    font-size: inherit;
+}
+
+h3 tt,
+h3 code {
+    font-size: inherit;
+}
+
+h4 tt,
+h4 code {
+    font-size: inherit;
+}
+
+h5 tt,
+h5 code {
+    font-size: inherit;
+}
+
+h6 tt,
+h6 code {
+    font-size: inherit;
+}
+
+h1 {
+    font-size: 1.84em;
+    line-height: 1.16;
+    margin-top: 0.35rem;
+}
+
+h2 {
+    font-size: 1.48em;
+    line-height: 1.2;
+}
+
+h3 {
+    font-size: 1.24em;
+    line-height: 1.32;
+}
+
+h4 {
+    font-size: 1.12em;
+}
+
+h5 {
+    font-size: 1em;
+}
+
+h6 {
+    font-size: 1em;
+    color: var(--control-text-color);
+}
+
+p,
+blockquote,
+ul,
+ol,
+dl,
+table {
+    margin: 0.78em 0;
+}
+
+strong,
+b {
+    font-family: var(--font-body);
+    font-weight: 700;
+    color: var(--heading-color);
+    font-synthesis: weight style;
+    letter-spacing: 0;
+}
+
+em,
+i {
+    font-family: var(--font-body);
+    font-style: italic;
+    font-synthesis: style;
+}
+
+strong em,
+em strong,
+b i,
+i b {
+    font-family: var(--font-body);
+    font-weight: 700;
+    font-style: italic;
+    font-synthesis: weight style;
+}
+
+li > ol,
+li > ul {
+    margin: 0;
+}
+
+hr {
+    height: 1px;
+    padding: 0;
+    margin: 26px 0;
+    background-color: var(--border-color);
+    border: 0 none;
+    overflow: hidden;
+    box-sizing: content-box;
+    opacity: 0.8;
+}
+
+li p.first {
+    display: inline-block;
+}
+
+ul,
+ol {
+    padding-left: 1.45rem;
+}
+
+li {
+    padding-left: 0.15rem;
+}
+
+ul li::marker,
+ol li::marker {
+    color: var(--control-text-color);
+}
+
+ul:first-child,
+ol:first-child {
+    margin-top: 0;
+}
+
+ul:last-child,
+ol:last-child {
+    margin-bottom: 0;
+}
+
+blockquote {
+    border-left: 2px solid var(--quote-border-color);
+    background-color: var(--quote-bg-color);
+    padding: 0.55rem 1rem;
+    color: var(--quote-text-color);
+    border-radius: 10px;
+}
+
+blockquote blockquote {
+    padding-right: 0;
+}
+
+table {
+    padding: 0;
+    width: 100%;
+    border-collapse: collapse;
+    border-top: 1px solid var(--table-border-strong-color);
+    border-bottom: 1px solid var(--table-border-strong-color);
+    background-color: transparent;
+    word-break: initial;
+}
+
+table tr {
+    border: 0;
+    margin: 0;
+    padding: 0;
+}
+
+table tr:nth-child(2n),
+table thead {
+    background-color: transparent;
+}
+
+table thead tr {
+    border-bottom: 1px solid var(--table-border-strong-color);
+}
+
+table tbody tr {
+    border-bottom: 1px solid var(--table-row-border-color);
+}
+
+table th {
+    font-family: var(--font-body);
+    font-weight: 600;
+    border: 0;
+    margin: 0;
+    padding: 12px 18px 11px 0;
+    text-align: left;
+    vertical-align: bottom;
+    color: var(--heading-color);
+    font-size: 0.93rem;
+    line-height: 1.48;
+    letter-spacing: 0;
+    font-variant-numeric: lining-nums tabular-nums;
+}
+
+table td {
+    border: 0;
+    margin: 0;
+    padding: 12px 18px 12px 0;
+    vertical-align: top;
+    font-family: var(--font-body);
+    font-size: 0.93rem;
+    line-height: 1.56;
+    font-weight: 400;
+    font-variant-numeric: lining-nums tabular-nums;
+}
+
+table th:first-child,
+table td:first-child {
+    margin-top: 0;
+    color: var(--heading-color);
+}
+
+table th:last-child,
+table td:last-child {
+    margin-bottom: 0;
+    padding-right: 0;
+}
+
+table tbody tr:first-child td {
+    padding-top: 12px;
+}
+
+table tbody tr:last-child {
+    border-bottom: 0;
+}
+
+table tbody tr:last-child td {
+    padding-bottom: 12px;
+}
+
+table tbody tr:hover td {
+    background-color: var(--table-hover-color);
+}
+
+table td strong,
+table th strong {
+    font-family: var(--font-body);
+    font-weight: 700;
+    color: var(--heading-color);
+}
+
+.CodeMirror-lines {
+    padding-left: 0;
+}
+
+.code-tooltip {
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.4);
+    border-top: 1px solid var(--code-border-color);
+}
+
+code,
+tt {
+    font-family: var(--font-mono);
+    border: 1px solid var(--inline-code-border-color);
+    background-color: var(--inline-code-bg-color);
+    color: var(--inline-code-color);
+    border-radius: 999px;
+    padding: 0.08em 0.42em 0.1em;
+    font-size: 0.9em;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.03);
+}
+
+.md-fences {
+    font-family: var(--font-mono);
+    border: 1px solid var(--code-border-color);
+    background-color: var(--code-bg-color);
+    color: var(--code-text-color);
+    border-radius: 8px;
+    margin-bottom: 18px;
+    margin-top: 14px;
+    padding: 0.9rem 1rem 0.85rem;
+    line-height: 1.55;
+    box-shadow: 0 1px 0 rgba(255, 255, 255, 0.02);
+}
+
+.md-fences pre,
+.md-fences code,
+.md-fences tt,
+.md-fences .CodeMirror,
+.md-fences .CodeMirror pre,
+.md-fences .cm-s-inner {
+    font-family: var(--font-mono) !important;
+    color: inherit !important;
+}
+
+.md-fences .cm-s-inner span {
+    font-family: var(--font-mono) !important;
+}
+
+.md-fences code,
+.md-fences tt {
+    border: 0 !important;
+    background: transparent !important;
+    padding: 0 !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+}
+
+.md-fences .CodeMirror,
+.md-fences .CodeMirror-scroll,
+.md-fences .CodeMirror-sizer,
+.md-fences .CodeMirror-gutters,
+.md-fences .CodeMirror-lines {
+    background-color: transparent !important;
+}
+
+.md-fences .CodeMirror-cursor {
+    border-left: 1px solid var(--code-text-color) !important;
+}
+
+/* Code block text selection - darker background, preserve syntax colors */
+.CodeMirror-selected,
+.CodeMirror-selectedtext {
+    background: #3a3835 !important;
+}
+
+/* CodeMirror native selection styling - preserve original text colors */
+.cm-s-inner .CodeMirror-selected {
+    background: #3a3835 !important;
+}
+
+.cm-s-inner .CodeMirror-selectedtext {
+    background: #3a3835 !important;
+    /* No color change - preserve syntax highlighting */
+}
+
+/* Highlight active line in code blocks */
+.md-fences.md-focus .CodeMirror-activeline-background {
+    background-color: rgba(255, 255, 255, 0.03) !important;
+}
+
+/* Cursor color */
+.md-fences .CodeMirror-lines {
+    caret-color: var(--accent-color);
+}
+
+.md-fences .CodeMirror-linenumber,
+.md-fences .cm-comment,
+.md-fences .cm-meta {
+    color: var(--code-muted-color) !important;
+}
+
+.md-fences .cm-keyword,
+.md-fences .cm-def,
+.md-fences .cm-variable-2,
+.md-fences .cm-variable-3,
+.md-fences .cm-atom,
+.md-fences .cm-builtin {
+    color: var(--code-keyword-color) !important;
+}
+
+.md-fences .cm-string,
+.md-fences .cm-string-2 {
+    color: var(--code-string-color) !important;
+}
+
+.md-fences .cm-number {
+    color: var(--code-number-color) !important;
+}
+
+.md-fences .cm-tag,
+.md-fences .cm-attribute,
+.md-fences .cm-property,
+.md-fences .cm-qualifier,
+.md-fences .cm-link {
+    color: var(--code-symbol-color) !important;
+}
+
+.md-fences .cm-operator,
+.md-fences .cm-variable,
+.md-fences .cm-bracket {
+    color: var(--code-text-color) !important;
+}
+
+.md-task-list-item > input {
+    margin-left: -1.3em;
+    accent-color: var(--accent-color);
+}
+
+@media print {
+    html {
+        font-size: 13px;
+    }
+
+    pre {
+        page-break-inside: avoid;
+        word-wrap: break-word;
+    }
+}
+
+#write pre.md-meta-block {
+    padding: 1rem;
+    font-size: 85%;
+    line-height: 1.5;
+    background-color: #2a2a28;
+    border: 0;
+    border-radius: 10px;
+    color: #9a9896;
+    margin-top: 0 !important;
+}
+
+.mathjax-block > .code-tooltip {
+    bottom: 0.375rem;
+}
+
+/* Disable hover highlight on code blocks, math blocks, and HTML blocks */
+#write .md-fences,
+#write .mathjax-block,
+#write .md-rawblock {
+    transition: none !important;
+}
+
+#write .md-fences:hover,
+#write .mathjax-block:hover,
+#write .md-rawblock:hover,
+#write .md-fences.md-focus,
+#write .mathjax-block.md-focus,
+#write .md-rawblock.md-focus,
+.md-fences[contenteditable="true"]:hover,
+.mathjax-block[contenteditable="true"]:hover,
+.md-rawblock[contenteditable="true"]:hover {
+    background-color: var(--code-bg-color) !important;
+    box-shadow: none !important;
+    border-color: var(--code-border-color) !important;
+    outline: none !important;
+}
+
+/* Target inner elements that might change on hover - EXCLUDE selected text */
+#write .md-fences:hover .CodeMirror-lines,
+#write .mathjax-block:hover .CodeMirror-lines,
+#write .md-rawblock:hover .CodeMirror-lines,
+#write .md-fences.md-focus .CodeMirror-lines,
+#write .mathjax-block.md-focus .CodeMirror-lines,
+#write .md-rawblock.md-focus .CodeMirror-lines {
+    background-color: transparent !important;
+}
+
+/* Ensure selected text background is NOT overridden - darker background */
+#write .md-fences .CodeMirror-selected,
+#write .md-fences .CodeMirror-selectedtext,
+#write .md-fences ::selection {
+    background-color: #3a3835 !important;
+    /* Preserve original text color - no color property */
+}
+
+#write .md-fences:hover .CodeMirror,
+#write .mathjax-block:hover .CodeMirror,
+#write .md-rawblock:hover .CodeMirror,
+#write .md-fences.md-focus .CodeMirror,
+#write .mathjax-block.md-focus .CodeMirror,
+#write .md-rawblock.md-focus .CodeMirror {
+    background-color: transparent !important;
+}
+
+/* Specifically target mathjax block hover */
+#write .mathjax-block:hover,
+#write .mathjax-block.md-focus {
+    background-color: var(--code-bg-color) !important;
+}
+
+/* Remove any default Typora hover effects */
+#write .md-fences:before,
+#write .mathjax-block:before,
+#write .md-rawblock:before,
+#write .md-fences:after,
+#write .mathjax-block:after,
+#write .md-rawblock:after {
+    display: none !important;
+}
+
+/* Tooltip visibility only, no background change */
+.code-tooltip {
+    opacity: 0;
+    transition: opacity 0.15s ease;
+}
+
+.md-fences:hover .code-tooltip,
+.mathjax-block:hover .code-tooltip,
+.md-rawblock:hover .code-tooltip {
+    opacity: 1;
+}
+
+.md-mathjax-midline {
+    background: #2a2a28;
+}
+
+#write > h3.md-focus:before {
+    left: -1.5625rem;
+    top: 0.375rem;
+}
+
+#write > h4.md-focus:before {
+    left: -1.5625rem;
+    top: 0.285714286rem;
+}
+
+#write > h5.md-focus:before {
+    left: -1.5625rem;
+    top: 0.285714286rem;
+}
+
+#write > h6.md-focus:before {
+    left: -1.5625rem;
+    top: 0.285714286rem;
+}
+
+.md-image > .md-meta {
+    border-radius: 3px;
+    padding: 2px 0 0 4px;
+    font-size: 0.9em;
+    color: inherit;
+}
+
+.md-tag {
+    color: #9a9896;
+    opacity: 1;
+}
+
+.md-toc {
+    margin-top: 20px;
+    padding: 18px 20px;
+    background-color: #2a2a28;
+    border-radius: 10px;
+}
+
+.md-toc-item {
+    margin: 4px 0;
+    line-height: 1.6;
+}
+
+.md-toc-inner {
+    color: var(--text-color);
+    text-decoration: none;
+}
+
+.md-toc-inner:hover {
+    color: var(--accent-color);
+    text-decoration: underline;
+}
+
+.md-footnote {
+    font-size: 0.85em;
+    color: var(--control-text-color);
+}
+
+.md-def-name {
+    color: var(--code-symbol-color);
+    font-weight: 600;
+}
+
+.md-def-content {
+    color: var(--text-color);
+}
+
+.md-search-hit {
+    background-color: rgba(255, 215, 0, 0.25);
+    border-radius: 2px;
+}
+
+.md-search-select {
+    background-color: rgba(255, 165, 0, 0.35);
+    border-radius: 2px;
+}
+
+.sidebar-tabs {
+    border-bottom: none;
+}
+
+#typora-sidebar {
+    background-color: var(--side-bar-bg-color);
+}
+
+.outline-item:hover,
+.file-list-item:hover,
+.ty-side-sort-btn.active,
+.outline-expander:hover {
+    background-color: var(--item-hover-bg-color);
+}
+
+.file-tree-node.active > .file-node-content,
+.outline-item.active {
+    background-color: var(--active-file-bg-color);
+    border-left: 2px solid var(--active-file-border-color);
+}
+
+#typora-quick-open {
+    border: 1px solid var(--border-color);
+    background-color: #242423;
+}
+
+#typora-quick-open-item {
+    background-color: #2a2a28;
+    border-color: #3a3936 #454442 #454442 #3a3936;
+    border-style: solid;
+    border-width: 1px;
+}
+
+.on-focus-mode blockquote {
+    border-left-color: rgba(212, 165, 116, 0.2);
+}
+
+header,
+.context-menu,
+.megamenu-content,
+footer {
+    font-family: var(--font-ui);
+}
+
+.file-node-content:hover .file-node-icon,
+.file-node-content:hover .file-node-open-state {
+    visibility: visible;
+}
+
+.mac-seamless-mode #typora-sidebar {
+    background-color: var(--side-bar-bg-color);
+}
+
+.mac-os #write {
+    caret-color: var(--accent-color);
+}
+
+.md-lang {
+    color: #9a9896;
+}
+
+#md-notification .btn {
+    border: 0;
+}
+
+.dropdown-menu {
+    background-color: #2a2a28;
+    border-color: var(--border-color);
+}
+
+.dropdown-menu .divider {
+    border-color: #454442;
+    opacity: 0.6;
+}
+
+.ty-preferences .window-content {
+    background-color: var(--window-bg-color);
+}
+
+.ty-preferences .nav-group-item.active {
+    color: white;
+    background: #b8885a;
+}
+
+.menu-item-container a.menu-style-btn {
+    background-color: #2a2a28;
+    background-image: linear-gradient(180deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0));
+}
+
+
+/* ===== Mermaid Diagram Styles - Dark Theme ===== */
+svg[id^="mermaid"] {
+    font-family: var(--font-body) !important;
+}
+
+/* Base text styles - all text in mermaid */
+svg[id^="mermaid"] text,
+svg[id^="mermaid"] .label text,
+svg[id^="mermaid"] span,
+svg[id^="mermaid"] tspan {
+    fill: #f5f4f2 !important;
+    color: #f5f4f2 !important;
+}
+
+/* Node shapes */
+svg[id^="mermaid"] .node rect,
+svg[id^="mermaid"] .node circle,
+svg[id^="mermaid"] .node ellipse,
+svg[id^="mermaid"] .node polygon,
+svg[id^="mermaid"] .node path {
+    fill: #3a3936 !important;
+    stroke: #d4a574 !important;
+    stroke-width: 2px !important;
+}
+
+/* Node text */
+svg[id^="mermaid"] .node .label,
+svg[id^="mermaid"] .nodeLabel,
+svg[id^="mermaid"] .node .label text {
+    fill: #f5f4f2 !important;
+    color: #f5f4f2 !important;
+}
+
+/* Edges/arrows */
+svg[id^="mermaid"] .edgePath .path {
+    stroke: #d4a574 !important;
+    stroke-width: 2.5px !important;
+}
+
+svg[id^="mermaid"] .arrowheadPath,
+svg[id^="mermaid"] #arrowhead path {
+    fill: #d4a574 !important;
+}
+
+/* Edge label rect background */
+svg[id^="mermaid"] .edgeLabel rect {
+    fill: #3a3936 !important;
+    stroke: #d4a574 !important;
+    stroke-width: 1.5px !important;
+}
+
+/* Edge label text - CRITICAL for visibility */
+svg[id^="mermaid"] .edgeLabel .label span,
+svg[id^="mermaid"] .edgeLabel text {
+    fill: #f5f4f2 !important;
+    color: #f5f4f2 !important;
+    font-weight: 600 !important;
+}
+
+/* ForeignObject edge labels */
+svg[id^="mermaid"] .edgeLabel foreignObject > div {
+    background-color: #3a3936 !important;
+    color: #f5f4f2 !important;
+}
+
+g > foreignObject > div > span > p {
+    color: #f5f4f2 !important;
+    background-color: #3a3936 !important;
+}
+
+/* Cluster/subgraph */
+svg[id^="mermaid"] .cluster rect {
+    fill: #2a2a28 !important;
+    stroke: #4a4946 !important;
+    stroke-width: 1.5px;
+    stroke-dasharray: 5,5;
+}
+
+/* Class diagram */
+svg[id^="mermaid"] .classBox rect {
+    fill: #3a3936 !important;
+    stroke: #d4a574 !important;
+}
+
+svg[id^="mermaid"] .classTitle {
+    fill: #f5f4f2 !important;
+    font-weight: 700 !important;
+}
+
+svg[id^="mermaid"] .relation {
+    stroke: #d4a574 !important;
+}
+
+svg[id^="mermaid"] .classMember,
+svg[id^="mermaid"] .member {
+    fill: transparent !important;
+}
+
+svg[id^="mermaid"] .classMember text,
+svg[id^="mermaid"] .member text,
+svg[id^="mermaid"] .classMember tspan,
+svg[id^="mermaid"] .member tspan {
+    fill: #f5f4f2 !important;
+}
+
+svg[id^="mermaid"] .divider {
+    stroke: #4a4946 !important;
+}
+
+/* Sequence diagram */
+svg[id^="mermaid"] .actor {
+    fill: #3a3936 !important;
+    stroke: #d4a574 !important;
+}
+
+svg[id^="mermaid"] text.actor > tspan {
+    fill: #f5f4f2 !important;
+    font-weight: 700 !important;
+}
+
+svg[id^="mermaid"] .actor-line {
+    stroke: #4a4946 !important;
+}
+
+svg[id^="mermaid"] .messageLine0,
+svg[id^="mermaid"] .messageLine1 {
+    stroke: #d4a574 !important;
+    stroke-width: 1.5px !important;
+}
+
+svg[id^="mermaid"] .messageText {
+    fill: #f5f4f2 !important;
+}
+
+svg[id^="mermaid"] .loopLine {
+    stroke: #4a4946 !important;
+    stroke-dasharray: 4,4;
+}
+
+svg[id^="mermaid"] .activation,
+svg[id^="mermaid"] .activation0,
+svg[id^="mermaid"] .activation1,
+svg[id^="mermaid"] .activation2 {
+    fill: rgba(212, 165, 116, 0.2) !important;
+    stroke: #d4a574 !important;
+}
+
+svg[id^="mermaid"] .note {
+    fill: rgba(212, 165, 116, 0.1) !important;
+    stroke: #d4a574 !important;
+}
+
+svg[id^="mermaid"] .noteText > tspan {
+    fill: #f5f4f2 !important;
+}
+
+/* State diagram */
+svg[id^="mermaid"] .state {
+    fill: #3a3936 !important;
+    stroke: #d4a574 !important;
+}
+
+svg[id^="mermaid"] .transition {
+    stroke: #d4a574 !important;
+}
+
+svg[id^="mermaid"] .nodeCircle {
+    fill: #d4a574 !important;
+}
+
+/* Gantt chart */
+svg[id^="mermaid"] .section0,
+svg[id^="mermaid"] .section2 {
+    fill: rgba(255, 255, 255, 0.02) !important;
+}
+
+svg[id^="mermaid"] .section1,
+svg[id^="mermaid"] .section3 {
+    fill: rgba(255, 255, 255, 0.05) !important;
+}
+
+svg[id^="mermaid"] .task0,
+svg[id^="mermaid"] .task1,
+svg[id^="mermaid"] .task2,
+svg[id^="mermaid"] .task3 {
+    fill: #4a4946 !important;
+    stroke: #5a5855 !important;
+}
+
+svg[id^="mermaid"] .taskText,
+svg[id^="mermaid"] .taskText0,
+svg[id^="mermaid"] .taskText1,
+svg[id^="mermaid"] .taskText2,
+svg[id^="mermaid"] .taskText3 {
+    fill: #f5f4f2 !important;
+}
+
+svg[id^="mermaid"] .active0,
+svg[id^="mermaid"] .active1,
+svg[id^="mermaid"] .active2,
+svg[id^="mermaid"] .active3 {
+    fill: #d4a574 !important;
+    stroke: #d4a574 !important;
+}
+
+svg[id^="mermaid"] .done0,
+svg[id^="mermaid"] .done1,
+svg[id^="mermaid"] .done2,
+svg[id^="mermaid"] .done3 {
+    fill: #4a4946 !important;
+    stroke: #5a5855 !important;
+}
+
+svg[id^="mermaid"] .crit0,
+svg[id^="mermaid"] .crit1,
+svg[id^="mermaid"] .crit2,
+svg[id^="mermaid"] .crit3 {
+    fill: #e07a5f !important;
+    stroke: #e07a5f !important;
+}
+
+svg[id^="mermaid"] .today {
+    stroke: #d4a574 !important;
+}
+
+svg[id^="mermaid"] .grid .tick line {
+    stroke: #4a4946 !important;
+}
+
+/* Pie chart */
+svg[id^="mermaid"] text.pieTitleText,
+svg[id^="mermaid"] text.slice {
+    fill: #f5f4f2 !important;
+}
+
+/* ER diagram */
+svg[id^="mermaid"] .entityBox {
+    fill: #3a3936 !important;
+    stroke: #d4a574 !important;
+}
+
+svg[id^="mermaid"] .entityLabel {
+    fill: #f5f4f2 !important;
+}
+
+svg[id^="mermaid"] .relationshipLine {
+    stroke: #d4a574 !important;
+}
+
+svg[id^="mermaid"] .relationshipLabelBox {
+    fill: #3a3936 !important;
+    stroke: #d4a574 !important;
+}
+
+/* Journey diagram */
+svg[id^="mermaid"] .journey-section {
+    fill: #2a2a28 !important;
+    stroke: #4a4946 !important;
+}
+
+svg[id^="mermaid"] .journey-task {
+    fill: #3a3936 !important;
+    stroke: #d4a574 !important;
+}
+
+svg[id^="mermaid"] .journey-text {
+    fill: #f5f4f2 !important;
+}
+
+/* Git graph */
+svg[id^="mermaid"] .commit {
+    fill: #d4a574 !important;
+}
+
+svg[id^="mermaid"] .commit-label {
+    fill: #f5f4f2 !important;
+}
+
+svg[id^="mermaid"] .branch {
+    stroke: #d4a574 !important;
+}
+
+svg[id^="mermaid"] .branch-label {
+    fill: #f5f4f2 !important;
+}
+
+/* Flowchart */
+svg[id^="mermaid"] .flowchart-link {
+    stroke: #d4a574 !important;
+}
+
+svg[id^="mermaid"] .marker {
+    fill: #d4a574 !important;
+}
+
+svg[id^="mermaid"] line.divider {
+    stroke: #4a4946 !important;
+}
+
+/* Strong override for hover effects */
+#write .mathjax-block:hover,
+#write .md-rawblock:hover,
+#write .mathjax-block.md-focus,
+#write .md-rawblock.md-focus {
+    background-color: #1f1f1e !important;
+    background: #1f1f1e !important;
+    box-shadow: none !important;
+    border-color: #363533 !important;
+}
+
+/* Mathjax specific elements */
+#write .mathjax-block:hover .MathJax_Display,
+#write .mathjax-block:hover .MathJax {
+    background-color: transparent !important;
+}
+
+/* HTML block specific */
+#write .md-rawblock:hover .rawblock-input,
+#write .md-rawblock:hover .rawblock-tooltip {
+    background-color: #1f1f1e !important;
+}
+
+
+/* ============================================
+   FINAL FIX: Mathjax and Raw Block Hover
+   ============================================ */
+
+/* Base state - ensure transparent background */
+#write .mathjax-block,
+#write .md-rawblock {
+    background-color: transparent !important;
+}
+
+/* Hover state - force dark background */
+#write .mathjax-block:hover,
+#write .mathjax-block.md-focus,
+#write .md-rawblock:hover,
+#write .md-rawblock.md-focus {
+    background-color: #262624 !important;
+    background: #262624 !important;
+    box-shadow: none !important;
+    border-color: #3a3936 !important;
+    outline: none !important;
+}
+
+/* All direct children - transparent background */
+#write .mathjax-block > *,
+#write .md-rawblock > * {
+    background-color: transparent !important;
+}
+
+#write .mathjax-block:hover > *,
+#write .md-rawblock:hover > * {
+    background-color: transparent !important;
+}
+
+/* MathJax specific elements */
+#write .mathjax-block .MathJax,
+#write .mathjax-block .MathJax_Display,
+#write .mathjax-block .MathJax_SVG,
+#write .mathjax-block .mathjax-inline,
+#write .mathjax-block svg {
+    background-color: transparent !important;
+}
+
+#write .mathjax-block:hover .MathJax,
+#write .mathjax-block:hover .MathJax_Display,
+#write .mathjax-block:hover .MathJax_SVG,
+#write .mathjax-block:hover .mathjax-inline,
+#write .mathjax-block:hover svg {
+    background-color: transparent !important;
+}
+
+/* Raw block input area */
+#write .md-rawblock .rawblock-input {
+    background-color: #1f1f1e !important;
+    color: #f5f4f2 !important;
+}
+
+#write .md-rawblock:hover .rawblock-input {
+    background-color: #1f1f1e !important;
+}
+
+/* Raw block tooltip */
+#write .md-rawblock .rawblock-tooltip {
+    background-color: #2a2a28 !important;
+    color: #f5f4f2 !important;
+    border-color: #3a3936 !important;
+}
+
+
+/* ============================================
+   EDIT MODE FIX: Mathjax and Raw Block
+   ============================================ */
+
+/* Hover state - slightly darker than main background (#262624) */
+#write .mathjax-block:hover,
+#write .md-rawblock:hover {
+    background-color: #2d2d2b !important;
+    background: #2d2d2b !important;
+    box-shadow: none !important;
+    border-color: #454442 !important;
+    outline: none !important;
+}
+
+/* Focus/edit state - prevent light background */
+#write .mathjax-block.md-focus,
+#write .md-rawblock.md-focus,
+#write .md-rawblock-on-edit,
+#write .md-rawblock-on-edit:hover {
+    background-color: #2a2a28 !important;
+    background: #2a2a28 !important;
+    box-shadow: none !important;
+    border-color: #3a3936 !important;
+    outline: none !important;
+}
+
+/* Edit mode panels - force dark background */
+#write .md-rawblock-on-edit .md-htmlblock-panel,
+#write .md-rawblock-on-edit .md-mathblock-panel,
+#write .md-rawblock-on-edit .md-rawblock-panel,
+#write .md-rawblock-on-edit .md-rawblock-input {
+    background-color: #1f1f1e !important;
+    color: #f5f4f2 !important;
+    border-color: #3a3936 !important;
+}
+
+/* Edit mode CodeMirror */
+#write .md-rawblock-on-edit .CodeMirror {
+    background-color: #1f1f1e !important;
+}
+
+/* Edit mode tooltips */
+#write .md-rawblock-on-edit .md-rawblock-tooltip {
+    background-color: #2a2a28 !important;
+    color: #f5f4f2 !important;
+    border-color: #3a3936 !important;
+}
+
+/* Prevent any light backgrounds in edit mode */
+#write .md-rawblock-on-edit *,
+#write .md-rawblock-on-edit *:hover {
+    background-color: transparent !important;
+}
+
+#write .md-rawblock-on-edit .md-rawblock-input,
+#write .md-rawblock-on-edit .CodeMirror {
+    background-color: #1f1f1e !important;
+}
+
+
+/* ============================================
+   MERMAID ARROW FIX: Better visibility
+   ============================================ */
+
+/* Class diagram relation arrows - brighter color */
+svg[id^="mermaid"] .relation .arrow,
+svg[id^="mermaid"] .arrowMarkerPath,
+svg[id^="mermaid"] marker path,
+svg[id^="mermaid"] .marker path,
+svg[id^="mermaid"] defs marker polygon,
+svg[id^="mermaid"] defs marker path {
+    fill: #e8c9a0 !important;
+    stroke: #e8c9a0 !important;
+}
+
+/* Class diagram specific arrowheads */
+svg[id^="mermaid"] .composition .arrow,
+svg[id^="mermaid"] .aggregation .arrow,
+svg[id^="mermaid"] .dependency .arrow,
+svg[id^="mermaid"] .relation .arrow {
+    fill: #e8c9a0 !important;
+    stroke: #e8c9a0 !important;
+}
+
+/* All marker elements */
+svg[id^="mermaid"] marker {
+    fill: #e8c9a0 !important;
+}
+
+/* Association diamonds and triangles */
+svg[id^="mermaid"] polygon[points*="0,0"],
+svg[id^="mermaid"] .relation path[fill],
+svg[id^="mermaid"] .arrow[style*="fill"] {
+    fill: #e8c9a0 !important;
+}
+
+
+/* ============================================
+   EDIT MODE FONT COLORS - Dark Theme
+   ============================================ */
+
+/* Edit mode text color - ensure good contrast */
+#write .md-rawblock-on-edit .md-rawblock-input,
+#write .md-rawblock-on-edit .CodeMirror-code,
+#write .md-rawblock-on-edit .CodeMirror-line,
+#write .md-rawblock-on-edit textarea {
+    color: #f5f4f2 !important;
+}
+
+/* Edit mode cursor */
+#write .md-rawblock-on-edit .CodeMirror-cursor {
+    border-left-color: #f5f4f2 !important;
+}
+
+/* Edit mode selected text - darker background, preserve syntax colors */
+#write .md-rawblock-on-edit .CodeMirror-selected,
+#write .md-rawblock-on-edit .CodeMirror-selectedtext {
+    background-color: #3a3835 !important;
+    /* Preserve original text color - no color property */
+}
+
+/* Edit mode placeholder/hint text */
+#write .md-rawblock-on-edit .CodeMirror-placeholder {
+    color: #9a9896 !important;
+}
+
+/* Math block edit mode specific */
+#write .md-mathblock-panel .md-rawblock-input {
+    color: #f5f4f2 !important;
+}
+
+/* HTML block edit mode specific */
+#write .md-htmlblock-panel .md-rawblock-input {
+    color: #f5f4f2 !important;
+}
+
+/* Edit mode line numbers */
+#write .md-rawblock-on-edit .CodeMirror-linenumber {
+    color: #9a9896 !important;
+}
+
+/* Edit mode matching bracket */
+#write .md-rawblock-on-edit .CodeMirror-matchingbracket {
+    background-color: rgba(212, 165, 116, 0.3) !important;
+    color: #f5f4f2 !important;
+}
+
+/* Edit mode non-matching bracket */
+#write .md-rawblock-on-edit .CodeMirror-nonmatchingbracket {
+    background-color: rgba(224, 122, 95, 0.3) !important;
+    color: #f5f4f2 !important;
+}
+
+
+/* ============================================
+   EDIT MODE SYNTAX HIGHLIGHTING - Dark Theme
+   ============================================ */
+
+/* Keywords (\begin, \end, etc.) */
+#write .md-rawblock-on-edit .cm-keyword,
+#write .md-rawblock-on-edit .cm-tag,
+#write .md-rawblock-on-edit .cm-builtin {
+    color: #ff79c6 !important;
+}
+
+/* Commands/Functions (\bmatrix, \frac, etc.) */
+#write .md-rawblock-on-edit .cm-def,
+#write .md-rawblock-on-edit .cm-function {
+    color: #50fa7b !important;
+}
+
+/* Variables and parameters */
+#write .md-rawblock-on-edit .cm-variable,
+#write .md-rawblock-on-edit .cm-variable-2,
+#write .md-rawblock-on-edit .cm-variable-3 {
+    color: #f5f4f2 !important;
+}
+
+/* Strings/Literals */
+#write .md-rawblock-on-edit .cm-string,
+#write .md-rawblock-on-edit .cm-string-2 {
+    color: #f1fa8c !important;
+}
+
+/* Numbers */
+#write .md-rawblock-on-edit .cm-number,
+#write .md-rawblock-on-edit .cm-atom {
+    color: #bd93f9 !important;
+}
+
+/* Comments - brighter for better visibility */
+#write .md-rawblock-on-edit .cm-comment {
+    color: #a8a6a4 !important;
+    font-style: italic !important;
+}
+
+/* Operators (&, \\, etc.) */
+#write .md-rawblock-on-edit .cm-operator {
+    color: #8be9fd !important;
+}
+
+/* Property/Attribute */
+#write .md-rawblock-on-edit .cm-property,
+#write .md-rawblock-on-edit .cm-attribute {
+    color: #66d9ef !important;
+}
+
+/* Brackets and delimiters */
+#write .md-rawblock-on-edit .cm-bracket {
+    color: #f5f4f2 !important;
+}
+
+/* Special characters */
+#write .md-rawblock-on-edit .cm-meta {
+    color: #ffb86c !important;
+}
+
+/* LaTeX specific - backslash commands */
+#write .md-rawblock-on-edit .cm-cm-tex {
+    color: #50fa7b !important;
+}
+
+/* HTML tag names */
+#write .md-rawblock-on-edit .cm-tag.cm-bracket {
+    color: #ff79c6 !important;
+}
+
+/* HTML attributes */
+#write .md-rawblock-on-edit .cm-attribute {
+    color: #f1fa8c !important;
+}
+
+/* HTML strings */
+#write .md-rawblock-on-edit .cm-string.cm-attribute {
+    color: #f1fa8c !important;
+}
+
+
+/* HTML/Markdown comment visibility fix */
+.md-fences .cm-comment,
+.md-fences .cm-meta {
+    color: #b5a99d !important;
+}
+
+/* Selected comment text - darker background, preserve original color */
+.md-fences .cm-comment.CodeMirror-selectedtext,
+.md-fences .cm-meta.CodeMirror-selectedtext {
+    background-color: #3a3835 !important;
+    /* Preserve original comment color */
+}
+
+/* Edit mode selected comment */
+#write .md-rawblock-on-edit .cm-comment.CodeMirror-selectedtext {
+    background-color: #3a3835 !important;
+    /* Preserve original comment color */
+}
+

@@ -18,7 +18,8 @@
     --quote-border-color: #4a4946;
     --quote-text-color: #c8c6c3;
     --table-alt-color: #2a2a28;
-    --font-body: "Songti SC", "Noto Serif CJK SC", "Source Han Serif SC", "PingFang SC", "Hiragino Sans GB", serif;
+    /* --font-body: "Songti SC", "Noto Serif CJK SC", "Source Han Serif SC", "PingFang SC", "Hiragino Sans GB", serif; */
+    --font-body: "Source Serif 4", "Songti SC", "Noto Serif CJK SC", "Source Han Serif SC", serif;
     --font-ui: "PingFang SC", "Hiragino Sans GB", "Noto Sans CJK SC", "Source Han Sans SC", "Microsoft YaHei", "Segoe UI", sans-serif;
     --font-mono: Menlo, Monaco, "SF Mono", Consolas, "Sarasa Mono SC", "Cascadia Code", monospace;
     --table-border-strong-color: #4a4946;

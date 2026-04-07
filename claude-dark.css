@@ -8,16 +8,16 @@
     --item-hover-bg-color: rgba(255, 255, 255, 0.06);
     --active-file-bg-color: rgba(255, 255, 255, 0.1);
     --active-file-border-color: #d4a574;
-    --code-bg-color: #1f1f1e;
+    --code-bg-color: #1a1917;
     --code-text-color: #f0eeeb;
-    --code-border-color: #363533;
+    --code-border-color: #3d3c3a;
     --border-color: #3a3936;
     --accent-color: #d4a574;
     --heading-color: #f5f4f2;
-    --quote-bg-color: #2a2a28;
-    --quote-border-color: #4a4946;
+    --quote-bg-color: #2f2f2d;
+    --quote-border-color: #4a4846;
     --quote-text-color: #c8c6c3;
-    --table-alt-color: #2a2a28;
+    --table-alt-color: #2d2d2b;
     /* --font-body: "Songti SC", "Noto Serif CJK SC", "Source Han Serif SC", "PingFang SC", "Hiragino Sans GB", serif; */
     --font-body: "Source Serif 4", "Songti SC", "Noto Serif CJK SC", "Source Han Serif SC", serif;
     --font-ui: "PingFang SC", "Hiragino Sans GB", "Noto Sans CJK SC", "Source Han Sans SC", "Microsoft YaHei", "Segoe UI", sans-serif;
@@ -84,11 +84,57 @@ body {
 a {
     color: var(--accent-color);
     text-decoration: none;
+    position: relative;
+    transition: all 0.2s ease;
 }
 
 a:hover {
-    color: #e6c495;
-    text-decoration: underline;
+    color: #e8c9a0;
+    text-decoration: none;
+    text-shadow: 0 0 8px rgba(212, 165, 116, 0.4);
+}
+
+/* 段落中带超链接的文本 - 有图标 */
+#write p a:not(.md-toc-inner)::before {
+    content: '';
+    display: inline-block;
+    width: 0.85em;
+    height: 0.85em;
+    margin-right: 3px;
+    vertical-align: -0.1em;
+    background-color: var(--accent-color);
+    -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71'/%3E%3Cpath d='M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71'/%3E%3C/svg%3E") no-repeat center;
+    mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71'/%3E%3Cpath d='M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71'/%3E%3C/svg%3E") no-repeat center;
+    -webkit-mask-size: contain;
+    mask-size: contain;
+    transition: transform 0.3s cubic-bezier(0.25, 0.8, 0.25, 1), background-color 0.2s ease;
+}
+
+#write p a:not(.md-toc-inner):hover::before {
+    transform: rotate(45deg);
+    background-color: #e8c9a0;
+}
+
+/* 确保所有链接都没有下划线 */
+a,
+a:link,
+a:visited,
+a:hover,
+a:active,
+#write a,
+#write a:link,
+#write a:visited,
+#write a:hover,
+#write a:active {
+    text-decoration: none !important;
+    border-bottom: none !important;
+}
+
+/* 移除自动链接（裸URL）的下划线 */
+#write a[href^="http"]:not([href*=" "]),
+#write a[href^="https"]:not([href*=" "]) {
+    text-decoration: none !important;
+    border-bottom: none !important;
 }
 
 a:visited {
@@ -519,14 +565,40 @@ tt {
 }
 
 #write pre.md-meta-block {
-    padding: 1rem;
+    padding: 2rem 1.2rem 1.2rem;
     font-size: 85%;
-    line-height: 1.5;
-    background-color: #2a2a28;
-    border: 0;
+    line-height: 1.6;
+    font-family: var(--font-mono);
+    background-color: #252422;
+    border: 1.5px dashed #4a4946;
     border-radius: 10px;
-    color: #9a9896;
+    color: #a8a6a4;
     margin-top: 0 !important;
+    position: relative;
+    transition: all 0.2s ease;
+}
+
+#write pre.md-meta-block::before {
+    content: "YAML";
+    position: absolute;
+    top: 0;
+    right: 16px;
+    background-color: #d4a574;
+    color: #262624;
+    font-family: var(--font-ui);
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    padding: 3px 10px;
+    border-radius: 0 0 6px 6px;
+    text-transform: uppercase;
+}
+
+#write pre.md-meta-block:hover {
+    background-color: #2a2927;
+    border-style: solid;
+    border-color: #d4a574;
+    box-shadow: 0 4px 16px rgba(212, 165, 116, 0.15);
 }
 
 .mathjax-block > .code-tooltip {
@@ -611,7 +683,7 @@ tt {
 }
 
 .md-mathjax-midline {
-    background: #2a2a28;
+    background: #2f2f2d;
 }
 
 #write > h3.md-focus:before {
@@ -649,7 +721,7 @@ tt {
 .md-toc {
     margin-top: 20px;
     padding: 18px 20px;
-    background-color: #2a2a28;
+    background-color: #2f2f2d;
     border-radius: 10px;
 }
 
@@ -714,15 +786,21 @@ tt {
 }
 
 #typora-quick-open {
-    border: 1px solid var(--border-color);
-    background-color: #242423;
+    border: 1px solid #4a4946;
+    background-color: #3a3936;
+    border-radius: 8px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
 }
 
 #typora-quick-open-item {
-    background-color: #2a2a28;
-    border-color: #3a3936 #454442 #454442 #3a3936;
+    background-color: #3a3936;
+    border-color: #4a4946 #52514f #52514f #4a4946;
     border-style: solid;
     border-width: 1px;
+}
+
+#typora-quick-open-item:hover {
+    background-color: #454442;
 }
 
 .on-focus-mode blockquote {
@@ -734,6 +812,27 @@ header,
 .megamenu-content,
 footer {
     font-family: var(--font-ui);
+}
+
+/* Context menu - consistent with dropdown */
+.context-menu {
+    background-color: #3a3936;
+    border: 1px solid #4a4946;
+    border-radius: 8px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+}
+
+.context-menu .menu-item-container {
+    color: #f5f4f2;
+}
+
+.context-menu .menu-item-container:hover {
+    background-color: #454442;
+}
+
+.context-menu .selected {
+    background-color: #454442;
+    color: #f5f4f2;
 }
 
 .file-node-content:hover .file-node-icon,
@@ -758,13 +857,15 @@ footer {
 }
 
 .dropdown-menu {
-    background-color: #2a2a28;
-    border-color: var(--border-color);
+    background-color: #3a3936;
+    border: 1px solid #4a4946;
+    border-radius: 8px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
 }
 
 .dropdown-menu .divider {
-    border-color: #454442;
-    opacity: 0.6;
+    border-color: #52514f;
+    opacity: 0.5;
 }
 
 .ty-preferences .window-content {
@@ -777,7 +878,7 @@ footer {
 }
 
 .menu-item-container a.menu-style-btn {
-    background-color: #2a2a28;
+    background-color: #2f2f2d;
     background-image: linear-gradient(180deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0));
 }
 
@@ -852,10 +953,10 @@ g > foreignObject > div > span > p {
     background-color: #3a3936 !important;
 }
 
-/* Cluster/subgraph */
+/* Cluster/subgraph - distinct from quote block */
 svg[id^="mermaid"] .cluster rect {
-    fill: #2a2a28 !important;
-    stroke: #4a4946 !important;
+    fill: #2d2d2b !important;
+    stroke: #5a5856 !important;
     stroke-width: 1.5px;
     stroke-dasharray: 5,5;
 }
@@ -1086,10 +1187,10 @@ svg[id^="mermaid"] line.divider {
 #write .md-rawblock:hover,
 #write .mathjax-block.md-focus,
 #write .md-rawblock.md-focus {
-    background-color: #1f1f1e !important;
-    background: #1f1f1e !important;
+    background-color: #2f2f2d !important;
+    background: #2f2f2d !important;
     box-shadow: none !important;
-    border-color: #363533 !important;
+    border-color: #4a4946 !important;
 }
 
 /* Mathjax specific elements */
@@ -1115,15 +1216,15 @@ svg[id^="mermaid"] line.divider {
     background-color: transparent !important;
 }
 
-/* Hover state - force dark background */
+/* Hover state - distinct from main background */
 #write .mathjax-block:hover,
 #write .mathjax-block.md-focus,
 #write .md-rawblock:hover,
 #write .md-rawblock.md-focus {
-    background-color: #262624 !important;
-    background: #262624 !important;
+    background-color: #2f2f2d !important;
+    background: #2f2f2d !important;
     box-shadow: none !important;
-    border-color: #3a3936 !important;
+    border-color: #4a4946 !important;
     outline: none !important;
 }
 
@@ -1157,19 +1258,19 @@ svg[id^="mermaid"] line.divider {
 
 /* Raw block input area */
 #write .md-rawblock .rawblock-input {
-    background-color: #1f1f1e !important;
+    background-color: #1c1b19 !important;
     color: #f5f4f2 !important;
 }
 
 #write .md-rawblock:hover .rawblock-input {
-    background-color: #1f1f1e !important;
+    background-color: #1c1b19 !important;
 }
 
 /* Raw block tooltip */
 #write .md-rawblock .rawblock-tooltip {
-    background-color: #2a2a28 !important;
+    background-color: #2f2f2d !important;
     color: #f5f4f2 !important;
-    border-color: #3a3936 !important;
+    border-color: #4a4946 !important;
 }
 
 
@@ -1180,45 +1281,45 @@ svg[id^="mermaid"] line.divider {
 /* Hover state - slightly darker than main background (#262624) */
 #write .mathjax-block:hover,
 #write .md-rawblock:hover {
-    background-color: #2d2d2b !important;
-    background: #2d2d2b !important;
+    background-color: #2f2f2d !important;
+    background: #2f2f2d !important;
     box-shadow: none !important;
-    border-color: #454442 !important;
+    border-color: #4a4946 !important;
     outline: none !important;
 }
 
-/* Focus/edit state - prevent light background */
+/* Focus/edit state - distinct from hover */
 #write .mathjax-block.md-focus,
 #write .md-rawblock.md-focus,
 #write .md-rawblock-on-edit,
 #write .md-rawblock-on-edit:hover {
-    background-color: #2a2a28 !important;
-    background: #2a2a28 !important;
+    background-color: #2d2d2b !important;
+    background: #2d2d2b !important;
     box-shadow: none !important;
-    border-color: #3a3936 !important;
+    border-color: #52514f !important;
     outline: none !important;
 }
 
-/* Edit mode panels - force dark background */
+/* Edit mode panels - deeper background for focus */
 #write .md-rawblock-on-edit .md-htmlblock-panel,
 #write .md-rawblock-on-edit .md-mathblock-panel,
 #write .md-rawblock-on-edit .md-rawblock-panel,
 #write .md-rawblock-on-edit .md-rawblock-input {
-    background-color: #1f1f1e !important;
+    background-color: #1c1b19 !important;
     color: #f5f4f2 !important;
-    border-color: #3a3936 !important;
+    border-color: #3d3c3a !important;
 }
 
-/* Edit mode CodeMirror */
+/* Edit mode CodeMirror - match code block */
 #write .md-rawblock-on-edit .CodeMirror {
-    background-color: #1f1f1e !important;
+    background-color: #1c1b19 !important;
 }
 
-/* Edit mode tooltips */
+/* Edit mode tooltips - lighter than panel */
 #write .md-rawblock-on-edit .md-rawblock-tooltip {
-    background-color: #2a2a28 !important;
+    background-color: #2f2f2d !important;
     color: #f5f4f2 !important;
-    border-color: #3a3936 !important;
+    border-color: #4a4946 !important;
 }
 
 /* Prevent any light backgrounds in edit mode */
@@ -1229,7 +1330,7 @@ svg[id^="mermaid"] line.divider {
 
 #write .md-rawblock-on-edit .md-rawblock-input,
 #write .md-rawblock-on-edit .CodeMirror {
-    background-color: #1f1f1e !important;
+    background-color: #1c1b19 !important;
 }
 
 
@@ -1410,6 +1511,53 @@ svg[id^="mermaid"] .arrow[style*="fill"] {
     color: #f1fa8c !important;
 }
 
+/* ============================================
+   HTML SYNTAX HIGHLIGHTING - Dark Theme
+   ============================================ */
+
+/* HTML Comments */
+#write .cm-comment {
+    color: #6272a4 !important;
+    font-style: italic !important;
+}
+
+/* HTML Tag brackets < > */
+#write .cm-tag {
+    color: #ff79c6 !important;
+}
+
+/* HTML Tag names (div, span, etc.) */
+#write .cm-tag.cm-bracket + span,
+#write .cm-tag.cm-bracket ~ span.cm-tag,
+#write span.cm-tag:not(.cm-bracket) {
+    color: #8be9fd !important;
+}
+
+/* HTML Attribute names */
+#write .cm-attribute {
+    color: #f1fa8c !important;
+}
+
+/* HTML Attribute values / Strings */
+#write .cm-string {
+    color: #50fa7b !important;
+}
+
+/* HTML Operators (=) */
+#write .cm-operator {
+    color: #8be9fd !important;
+}
+
+/* HTML Entity (&nbsp; etc.) */
+#write .cm-entity {
+    color: #bd93f9 !important;
+}
+
+/* HTML Processing Instruction (<?php, <?xml) */
+#write .cm-meta {
+    color: #ffb86c !important;
+}
+
 
 /* HTML/Markdown comment visibility fix */
 .md-fences .cm-comment,
@@ -1428,5 +1576,99 @@ svg[id^="mermaid"] .arrow[style*="fill"] {
 #write .md-rawblock-on-edit .cm-comment.CodeMirror-selectedtext {
     background-color: #3a3835 !important;
     /* Preserve original comment color */
+}
+
+/* ============================================
+   QUICK OPEN & RECENT FILES PANEL - Dark Theme
+   ============================================ */
+
+/* Recent files panel and megamenu panel - consistent with dropdown */
+#recent-file-panel,
+.megamenu-menu-panel {
+    background-color: #3a3936 !important;
+    border: 1px solid #4a4946;
+}
+
+/* Recent file panel search input */
+#recent-file-panel-search-input {
+    background-color: #454442;
+    border: 1px solid #52514f;
+    color: #f5f4f2;
+}
+
+#recent-file-panel-search-input::placeholder {
+    color: #9a9896;
+}
+
+/* Recent file action buttons */
+#recent-file-panel-action-btn {
+    color: #d4a574;
+}
+
+#recent-file-panel-action-btn:hover {
+    color: #e6c495;
+}
+
+/* Sidebar files menu - 左下角最近使用的目录菜单 */
+#sidebar-files-menu {
+    background-color: #3a3936;
+    border: 1px solid #4a4946;
+    border-radius: 8px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+}
+
+#sidebar-files-menu li a {
+    color: #f5f4f2;
+}
+
+#sidebar-files-menu li:hover > a,
+#sidebar-files-menu .file-action-item:hover {
+    background-color: #454442 !important;
+    color: #f5f4f2;
+}
+
+#sidebar-files-menu .file-action-item {
+    color: #f5f4f2;
+}
+
+/* Sidebar footer */
+#ty-sidebar-footer {
+    background-color: #262624 !important;
+    border-top: 1px solid #3a3936;
+}
+
+.sidebar-footer-item:hover {
+    background-color: #3a3936 !important;
+    color: #f5f4f2;
+}
+
+/* Megamenu panel table styles */
+.megamenu-menu-panel table {
+    background-color: transparent;
+}
+
+.megamenu-menu-panel table tr {
+    background-color: transparent;
+}
+
+.megamenu-menu-panel table tr:hover {
+    background-color: #454442 !important;
+}
+
+/* Megamenu content background */
+.megamenu-content {
+    background-color: #3a3936;
+}
+
+/* Long btn in megamenu */
+.long-btn {
+    background-color: #454442;
+    border-color: #52514f;
+    color: #f5f4f2;
+}
+
+.long-btn:hover {
+    background-color: #4a4946;
+    border-color: #d4a574;
 }
 

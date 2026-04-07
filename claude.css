@@ -84,11 +84,57 @@ body {
 a {
     color: var(--accent-color);
     text-decoration: none;
+    position: relative;
+    transition: all 0.2s ease;
 }
 
 a:hover {
-    color: #9d552d;
-    text-decoration: underline;
+    color: #8b4513;
+    text-decoration: none;
+    text-shadow: 0 0 8px rgba(139, 69, 19, 0.25);
+}
+
+/* 段落中带超链接的文本 - 有图标 */
+#write p a:not(.md-toc-inner)::before {
+    content: '';
+    display: inline-block;
+    width: 0.85em;
+    height: 0.85em;
+    margin-right: 3px;
+    vertical-align: -0.1em;
+    background-color: var(--accent-color);
+    -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71'/%3E%3Cpath d='M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71'/%3E%3C/svg%3E") no-repeat center;
+    mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71'/%3E%3Cpath d='M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71'/%3E%3C/svg%3E") no-repeat center;
+    -webkit-mask-size: contain;
+    mask-size: contain;
+    transition: transform 0.3s cubic-bezier(0.25, 0.8, 0.25, 1), background-color 0.2s ease;
+}
+
+#write p a:not(.md-toc-inner):hover::before {
+    transform: rotate(45deg);
+    background-color: #8b4513;
+}
+
+/* 确保所有链接都没有下划线 */
+a,
+a:link,
+a:visited,
+a:hover,
+a:active,
+#write a,
+#write a:link,
+#write a:visited,
+#write a:hover,
+#write a:active {
+    text-decoration: none !important;
+    border-bottom: none !important;
+}
+
+/* 移除自动链接（裸URL）的下划线 */
+#write a[href^="http"]:not([href*=" "]),
+#write a[href^="https"]:not([href*=" "]) {
+    text-decoration: none !important;
+    border-bottom: none !important;
 }
 
 a:visited {
@@ -524,14 +570,40 @@ tt {
 }
 
 #write pre.md-meta-block {
-    padding: 1rem;
+    padding: 2rem 1.2rem 1.2rem;
     font-size: 85%;
-    line-height: 1.5;
-    background-color: #f6f1ea;
-    border: 0;
+    line-height: 1.6;
+    font-family: var(--font-mono);
+    background-color: #f8f5f0;
+    border: 1.5px dashed #d8cbbb;
     border-radius: 10px;
-    color: #6b6158;
+    color: #7a6f62;
     margin-top: 0 !important;
+    position: relative;
+    transition: all 0.2s ease;
+}
+
+#write pre.md-meta-block::before {
+    content: "YAML";
+    position: absolute;
+    top: 0;
+    right: 16px;
+    background-color: #d4a574;
+    color: #fff;
+    font-family: var(--font-ui);
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    padding: 3px 10px;
+    border-radius: 0 0 6px 6px;
+    text-transform: uppercase;
+}
+
+#write pre.md-meta-block:hover {
+    background-color: #fdfaf5;
+    border-style: solid;
+    border-color: #c9a070;
+    box-shadow: 0 4px 12px rgba(212, 165, 116, 0.12);
 }
 
 .mathjax-block > .code-tooltip {
@@ -1387,5 +1459,89 @@ svg[id^="mermaid"] .arrow[style*="fill"] {
 /* HTML strings */
 #write .md-rawblock-on-edit .cm-string.cm-attribute {
     color: #8f6f2f !important;
+}
+
+/* ============================================
+   HTML SYNTAX HIGHLIGHTING - Light Theme
+   ============================================ */
+
+/* HTML Comments */
+#write .cm-comment {
+    color: #9a9896 !important;
+    font-style: italic !important;
+}
+
+/* HTML Tag brackets < > */
+#write .cm-tag {
+    color: #b14a40 !important;
+}
+
+/* HTML Tag names (div, span, etc.) */
+#write .cm-tag.cm-bracket + span,
+#write .cm-tag.cm-bracket ~ span.cm-tag,
+#write span.cm-tag:not(.cm-bracket) {
+    color: #2c5ec6 !important;
+}
+
+/* HTML Attribute names */
+#write .cm-attribute {
+    color: #8f6f2f !important;
+}
+
+/* HTML Attribute values / Strings */
+#write .cm-string {
+    color: #2f8f2f !important;
+}
+
+/* HTML Operators (=) */
+#write .cm-operator {
+    color: #2c5ec6 !important;
+}
+
+/* HTML Entity (&nbsp; etc.) */
+#write .cm-entity {
+    color: #c06a2a !important;
+}
+
+/* HTML Processing Instruction (<?php, <?xml) */
+#write .cm-meta {
+    color: #7b2ff7 !important;
+}
+
+/* ============================================
+   SIDEBAR FILES MENU & FOOTER - Light Theme
+   ============================================ */
+
+/* Sidebar files menu - 左下角最近使用的目录菜单 */
+#sidebar-files-menu {
+    background-color: #faf4ec;
+    border: 1px solid #e9e2d8;
+    border-radius: 8px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+}
+
+#sidebar-files-menu li a {
+    color: #2b2621;
+}
+
+#sidebar-files-menu li:hover > a,
+#sidebar-files-menu .file-action-item:hover {
+    background-color: rgba(188, 106, 58, 0.12) !important;
+    color: #2b2621;
+}
+
+#sidebar-files-menu .file-action-item {
+    color: #2b2621;
+}
+
+/* Sidebar footer */
+#ty-sidebar-footer {
+    background-color: #faf9f5 !important;
+    border-top: 1px solid #e9e2d8;
+}
+
+.sidebar-footer-item:hover {
+    background-color: rgba(188, 106, 58, 0.08) !important;
+    color: #2b2621;
 }
 
